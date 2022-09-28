@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test013.html</title>
+</head>
+<body>
+
+<div>
+	<h1>  </h1>
+	<hr>
+</div>
+	
+	<table border="1">
+		<tr>
+			<td>A</td>
+			<td>B</td>
+			<td>C</td>
+			<td>D</td>
+			<td>E</td>
+		</tr>
+		
+		<tr>
+			<td>F</td>
+			<td>G</td>
+			<td>H</td>
+		</tr>
+		
+		<tr>
+		</tr>
+		
+		<tr>
+		</tr>
+		
+		
+		<tr>
+		</tr>
+		
+		
+		<tr>
+		</tr>
+		
+	
+	</table>
+
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023.html</title>
+</head>
+<body>
+
+	<div>
+		<h1>라디오 버튼 만들기</h1>
+		<hr>
+	</div>
+	
+	<div>
+	
+		<form>
+			<p>1. 당신의 성별은?</p>
+			<label>
+				<input type="radio" name="gender" value="f" id="gender1">여자
+			</label>
+			
+			<input type="radio" name="gender" value="m" id="gender2">
+			<label for="gender2">남자</label>
+			
+			<br><br>
+			
+			<p>2.당신이 좋아하는 과목은?</p>
+			<input type="radio">국어
+			<input type="radio">영어
+			<input type="radio">사회
+			<input type="radio">과학
+			<input type="radio">수학
+			<input type="radio">역사학
+		</form>
+	</div>
+
+</body>
+</html>

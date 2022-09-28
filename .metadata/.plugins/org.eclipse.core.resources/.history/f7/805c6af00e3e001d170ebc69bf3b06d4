@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test013.html</title>
+</head>
+<body>
+
+<div>
+	<h1>  </h1>
+	<hr>
+</div>
+	
+	<table border="1" width="400" cellspacing="10">
+		<tr>
+			<td rowspan="2">A</td>
+			<td>B</td>
+			<td>C</td>
+			<td rowspan="2">D</td>
+			<td>E</td>
+		</tr>
+		
+		<tr>
+			<td>F</td>
+			<td>G</td>
+			<td rowspan="2">H</td>
+		</tr>
+		
+		<tr>
+			<td>I</td>
+			<td>J</td>
+			<td>K</td>
+			<td rowspan="3">L</td>
+		</tr>
+		
+		<tr>
+			<td rowspan="2">M</td>
+			<td>N</td>
+			<td rowspan="3">O</td>
+			<td rowspan="3">P</td>
+			
+		</tr>
+		
+		
+		<tr>
+			<td>Q</td>
+		</tr>
+		
+		
+		<tr>
+			<td>R</td>
+			<td>S</td>
+			<td>T</td>			
+		</tr>
+		
+	
+	</table>
+
+
+
+</body>
+</html>

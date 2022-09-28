@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test006.html</title>
+</head>
+<body>
+
+	<div>
+		<h1>수평선 넣기 / 공백 넣기</h1>
+		<hr>
+	</div>
+	
+	<div>
+		수평선을 사용해보자.
+		<hr size ="3" align="left" color="red">
+		<br><br>
+	</div>
+
+</body>
+</html>

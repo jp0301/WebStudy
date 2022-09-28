@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test024.html</title>
+</head>
+<body>
+
+	<div>
+		<h1>전송, 취소 버튼 만들기</h1>
+		<hr>
+	</div>
+	
+	<div>
+		<!--  데이터 전송 및 페이지 요청 -->
+		<form action="">
+	
+		</form>
+	</div>
+
+</body>
+</html>

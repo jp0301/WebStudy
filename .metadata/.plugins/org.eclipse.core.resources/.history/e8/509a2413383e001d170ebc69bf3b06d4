@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026.html</title>
+</head>
+<body>
+	
+	<div>
+		<h1>드롭다우메뉴(selectbox) 만들기</h1>
+		<hr>
+	</div>
+	
+	<div>
+	
+		<form>
+			<p>당신이 가장 좋아하는 운동은?</p>
+			<select>
+				<option>축구</option>
+				<option>야구</option>
+				<option>농구</option>
+				<option>배구</option>
+			</select>
+			<br><br>
+			
+			
+		</form>
+	</div>
+	<br><br>
+	
+	
+</body>
+</html>

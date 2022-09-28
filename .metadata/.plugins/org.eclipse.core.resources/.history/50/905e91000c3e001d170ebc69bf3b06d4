@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test012.html</title>
+</head>
+<body>
+
+	<div>
+		<h1>테이블 열 / 행 병합 실습</h1>
+		<hr>
+	</div>
+	
+	<div>
+		<table border="1" bgcolor="orange" width="400">
+		
+			<tr>
+				<td>노원구</td>
+				<td>강원구</td>
+			</tr>
+			
+		</table>
+	</div>
+
+</body>
+</html>
