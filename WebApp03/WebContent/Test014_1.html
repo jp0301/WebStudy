@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test014_1.html</title>
+
+<style type="text/css">
+
+	
+	* {
+		color: white; 
+	}
+	
+	body {
+		background-color: #565656;
+	}
+	
+	.calc {
+		margin-top: 50px;
+	}	
+	
+	input {
+		 font-family: 나눔고딕코딩;
+		 font-weight: bold;
+		 color: black; 
+	}
+	
+	input:focus {
+		background-color: #eeeedd;
+	}
+	
+	
+	input.btn{
+		padding: 10pt;
+		font-weight: 맑은 고딕;
+		font-size: 15pt;
+		color: white;
+		background-color: #303030;
+		border: 1px solid #303030;
+		border-radius: 4px;
+		transition: 0.5s;		
+	}
+	
+	
+	input.btn:hover {
+		background-color: #D4D4D4;
+		border: 1px solid white;
+		box-shadow: 4px 3px 3px #454545;
+		transform: scale(1.1);
+	}
+	
+	
+	input.btn:active {color: orange;}
+	
+	.inputNum {
+		padding: 10pt;
+	}
+	
+	
+	
+	.resultNum {
+		background-color: #565656;
+		padding: 10pt;
+		font-size: 20px;
+		color: white;
+	}
+	
+</style>
+
+<script type="text/javascript">
+
+	function calc(obj)
+	{
+		
+		var num1 = document.getElementById("num1").value;
+		var num2 = document.getElementById("num2").value;
+		
+		//alert(obj.value);
+		
+		if(obj.value == "＋")
+		{
+			result = parseInt(num1) + parseInt(num2);
+		}
+		else if(obj.value == "－")
+		{
+			result = parseInt(num1) - parseInt(num2);
+		}
+		else if(obj.value == "×")
+		{
+			result = parseInt(num1) * parseInt(num2);
+		}
+		else if(obj.value == "÷")
+		{
+			result = parseInt(num1) / parseInt(num2);
+		}
+		
+		document.getElementById("result").value = result;
+		
+	}
+
+
+/* 	function add_btn()
+	{
+		var num1 = document.getElementById("num1").value;
+		var num2 = document.getElementById("num2").value;
+		var result = parseInt(num1) + parseInt(num2);
+		document.getElementById("result").value = result;
+	}
+	
+	function minus_btn()
+	{
+		var num1 = document.getElementById("num1").value;
+		var num2 = document.getElementById("num2").value;
+		var result = parseInt(num1) - parseInt(num2);
+		document.getElementById("result").value = result;
+	}
+	
+	function multiply_btn()
+	{
+		var num1 = document.getElementById("num1").value;
+		var num2 = document.getElementById("num2").value;
+		var result = parseInt(num1) * parseInt(num2);
+		document.getElementById("result").value = result;
+	}
+	
+	function divide_btn()
+	{
+		var num1 = document.getElementById("num1").value;
+		var num2 = document.getElementById("num2").value;
+		var result = parseInt(num1) / parseInt(num2);
+		document.getElementById("result").value = result;
+	}
+	 */
+	
+
+
+</script>
+
+
+</head>
+
+<body>
+	
+	<div>
+		<h1>자바스크립트 활용</h1>
+		<hr>
+	</div>
+	
+	<div>
+		<p>두 개의 정수를 입력받고</p>
+		<p>합, 차, 곱, 몫을 연산하여 연산 결과를 출력하는 페이지를 구성한다.</p>
+		<p>HTML, CSS, Javascript 를 활용하여 처리한다.</p>
+	</div>
+	
+	<div class="calc">
+		<form>
+		
+			<input type="text" id="num1" class="inputNum" placeholder="정수1">
+			<input type="text" id="num2" class="inputNum" placeholder="정수2">
+			<br><br>
+			
+			<input type="button" class="btn" value="＋" id="add" onclick="calc(this)">
+			<input type="button" class="btn" value="－" id="minus" onclick="calc(this)">
+			<input type="button" class="btn" value="×" id="multiply" onclick="calc(this)">
+			<input type="button" class="btn" value="÷" id="divide" onclick="calc(this)">
+			<br><br>
+			
+			<input type="text" id="result" class="resultNum" disabled="disabled" placeholder="결과">
+			<input type="reset" class="btn" value="취소">
+		</form>
+	</div>
+
+
+</body>
+</html>
