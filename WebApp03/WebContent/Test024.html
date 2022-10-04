@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Test024.html</title>
+	
+	
+	<style type="text/css">
+		* {color: #223322; }
+		
+		input { font-family: 나눔고딕코딩;}
+		input:focus {background-color: #eeeedd;}
+		
+		.btn { font-weight: bold; font-family: 맑은 고딕;}
+		.btn:hover { color:orange;}
+		
+		
+		th {
+			width: 50px; 
+			color: #FFF;
+			margin-top: 10px;
+			padding: 5px;
+		}
+		
+		
+		.subtitle {
+			width: 250px;
+			background-color: #1b1f21;
+			color: #fff;
+			padding: 8pt;
+			border-radius: 10px;
+			display: flex;
+			margin: 0 auto;
+			display: flex;
+  			justify-content: center;
+			
+		}
+		
+		
+		table {
+			background-color: #262829;
+			border-radius: 7px;
+			padding: 10px;
+		}
+		
+		td {
+			padding: 10pt;	
+			text-align: center;
+			color: #FFF;
+		}
+		
+		td:hover {
+			color: #FFF;
+			background-color: #2196f3;
+			border-radius: 4px;
+			
+			transform: scale(1.1);
+			transition: 0.5s;
+		}
+		
+		.txt { text-align: center; }
+		textarea { font-family:나눔고딕코딩;}
+	</style>
+	
+	
+	
+	<script type="text/javascript">
+	
+		function calendar() {
+			
+			var yStr = document.getElementById("txtYear").value;
+			var mStr = document.getElementById("txtMonth").value;
+			
+			var y = Number(yStr);
+			var m = Number(mStr);
+			
+			
+
+			
+			//        1  2  3  4  5  6  7  8  9 10 11 12   월
+			var d = [31,28,31,30,31,30,31,31,30,31,30,31];
+			var nalsu = 0;
+			
+			
+			
+			
+			// 윤년 판단
+			if ((y%4 == 0 && y % 100 != 0) || y % 400 == 0) //윤년
+			{
+				d[1] = 29;
+			}
+			
+			// 1.1.1 ~ 입력 받은 연도의 이전년도 12월 31일까지 계산
+			for (var i = 0; i < y; i++)
+			{
+				if ((y%4 == 0 && y % 100 != 0) || y % 400 == 0)
+				{
+					nalsu += 366;
+				}
+				else
+					nalsu += 365;
+			}
+			
+			//입력받은 연도에서 입력연도.1월 1일 부터 ~ 입력할 월의 이전 월까지 계산
+			for (var i = 0; i < (m-1); i++)
+			{
+				nalsu += d[i];
+			}
+			
+			
+			// 요일 체크
+			// 입력받은 연도의 입력받은 월의 1일이 무슨 요일인지 확인
+			w = nalsu % 7;
+			// 5 (2022년 9월 기준) → 2022년 9월 1일은 목요일
+			// 7 (2022년 10월 기준) → 2022년 10월 1일은 토요일
+			
+			//----------------------------------------------------------------------------------
+			
+			var tableNode = document.getElementById("calendarTbl");
+			var trNode = document.createElement("tr");
+			
+			for (var i = 0; i < w; i++)
+			{
+				trNode.appendChild(createTdNode(" "));
+			}
+			
+			for (var j = 1; j <= d[m-1]; j++)
+			{
+				trNode.appendChild(createTdNode(j));
+				w += 1;
+				
+				if (w == 7)
+				{
+					tableNode.appendChild(trNode);
+					trNode = document.createElement("tr");
+					w = 0;
+				}
+			}
+			
+			tableNode.appendChild(trNode);
+			
+		}
+		
+		
+		
+		function createTdNode(val) {
+			var textNode = document.createTextNode(val);
+			var tdNode = document.createElement("td");
+			tdNode.appendChild(textNode);
+			
+			return tdNode;
+		}
+		
+		
+		// 시계 만들어보기
+		date = new Data();
+		year = date.getFullYear();
+		month = date.getMonth() + 1;
+		day = date.getDate();
+		
+		document.getElementById("current_date").innerHTML = Date();
+		
+	</script>
+	
+	
+	
+	
+</head>
+
+<body>
+
+	<div>
+		<h1>테이블 동적 생성으로 만년달력 그리기</h1>
+		<hr>
+	</div>
+	
+	<div>
+		<form>
+			<input type="text" id="txtYear" class="txt" style="width: 67px;"> 년
+			<input type="text" id="txtMonth" class="txt" style="width: 67px;"> 월
+			<br><br>
+			
+			
+			<button type="button" class="btn" style="width: 200px;" onclick="calendar()">만년달력 그리기</button>
+
+			<a href="http://localhost:8090/WebApp03/Test024.html" type="button">만년달력 지우기</a>
+
+			<br><br>
+			
+			<table id="calendarTbl">
+			<tr>
+				<th>◀</th>
+				<th colspan="5">Oct, 2022</th>
+				<th>▶</th>				
+			</tr>
+				<tr>
+				
+					<th colspan="7">
+						<div class="subtitle">
+							<script>
+								date = new Date();
+								year = date.getFullYear();
+								month = date.getMonth() + 1;
+								day = date.getDate();
+								
+								var meng = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]; 
+								var week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+								
+								var monthday = "";
+								for (var i = 0; i < meng.length; i++)
+								{
+									if (month == (i+1))
+									{
+										monthday = meng[i];
+									}
+								}
+								
+								var weekday = week[new Date().getDay()];
+								
+								var str = "Today: " + weekday + ", " + day + ", " + monthday + " " + year;
+								
+								document.write(str);
+							</script>
+						</div>
+						
+					</th>
+				</tr>
+				<tr>
+					<th>일</th>
+					<th>월</th>
+					<th>화</th>
+					<th>수</th>
+					<th>목</th>
+					<th>금</th>
+					<th>토</th>				
+				</tr>
+			</table>
+			
+			</form>
+	
+	</div>
+
+
+</body>
+
+</html>

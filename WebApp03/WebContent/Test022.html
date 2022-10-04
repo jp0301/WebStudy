@@ -13,74 +13,72 @@
 
 <script type="text/javascript">
 
-	function test()
-	{
-		
-		//alert("호출 확인");
-		
-		var str ="";
-		var arr = new Array(new Array(),  new Array(), new Array(), new Array(), new Array(), new Array());
-		var n = 0;
-		
-		do
-		{
-			str = prompt("이름 국어 영어 수학" + "(" + (n+1) + ")" + " : ");
-			
-			if(str == "." || str == null || str == " ")
-			{
-				break;
-			}
-			
-			
-			var data = str.split(" ");
-			
-			arr[n][0] = data[0]; //이름
-			arr[n][1] = data[1]; // 국어
-			arr[n][2] = data[2]; // 영어
-			arr[n][3] = data[3]; // 수학
-			arr[n][4] = Number(data[1]) + Number(data[2]) + Number(data[3]); // 총점 
-			arr[n][5] = 1; // 등수 1초기화
-			
-			n++;
-			
-		} while (true);
-		
-		// 등수 구하기
-		for (var i = 0; i < arr[0].length; i++)
-		{
-			for (var j = 0; j < arr[0].length; j++)
-			{
-				if (i == j)
-				{
-					continue;
-				}
-				if (Number(arr[i][4]) < Number(arr[j][4]))
-				{
-					arr[i][5] = (Number(arr[i][5])+1).toString();
-				}
-			}
-		}
-		
-		var result = "";
-		
-		
-		for (var j = 0; j < arr[0].length; j++)
-		{
-			for (var k = 0; k < arr[j].length; k++)
-			{
-				result += arr[j][k] + "     ";
-			}
-			
-			result += "\n";
-		}
-		
-		
-		document.getElementById("txtCount").value = n;	
-		document.getElementById("memberList").value = "이름     국어   영어   수학    총점    등수\n\n";
-		document.getElementById("memberList").value += result;
-		
+function test()
+{
 	
+	//alert("호출 확인");
+	
+	var str ="";
+	var arr = new Array(new Array(),  new Array(), new Array(), new Array(), new Array(), new Array());
+	//                    이름들       국어점수들    영어점수들   수학점수들    총점들      석차들
+	var n = 0;
+	
+	do
+	{
+		str = prompt("이름 국어 영어 수학(" + (n+1) + ") : ");	// "이연주 90 80 70"
+		
+		if (str == null || str == "." || str == " " || str == "")
+		{
+			break;
+		}
+		
+		var member = str.split(" ");	// var member = ["이연주", "90", "80", "70"];
+		
+		arr[0][n] = member[0];	// 이름
+		arr[1][n] = member[1];	// 국어점수
+		arr[2][n] = member[2];  // 영어점수
+		arr[3][n] = member[3];  // 수학점수
+		arr[4][n] = Number(member[1]) + Number(member[2]) + Number(member[3]);  // 총점
+		arr[5][n] = 1;
+		
+		n++;
+		
+	} while (true);
+	
+	// 석차(등수) 계산
+	for (var i = 0; i < arr[4].length; i++)
+	{
+		for (var j = 0; j < arr[4].length; j++)
+		{
+			if(i==j)
+				continue;	// i, j가 같을 때는 비교 필요 없음(자기자신 비교니까) / 뒷부분 무시하고 계속~
+			
+			if (Number(arr[4][i]) < Number(arr[4][j]))	// 총점 비교
+			{
+				// i 번째 학생의 등수(arr[5][i])를 1만큼 증가
+				arr[5][i] = (Number(arr[5][i]) + 1).toString();	// 다시 문자 형태로 ...
+			}
+		}
 	}
+	
+	//-- 여기까지 수행하면 arr 배열 구성 끝~!!!
+	
+	var result = "";
+	
+	for (var j = 0; j < arr[0].length; j++)
+	{
+		for (var k = 0; k < arr.length; k++)
+		{
+			//alert(k + " " + j);
+			result += arr[k][j] + "    ";
+		}
+		result += "\n";
+	}
+	
+	document.getElementById("txtCount").value = arr[0].length;
+	document.getElementById("memberList").value = "이름    국어  영어  수학   총점 등수\n\n";
+	document.getElementById("memberList").value += result;
+}
 
 
 </script>
