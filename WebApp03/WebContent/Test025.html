@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Test025.html</title>
+
+
+<style type="text/css">
+
+	.resultpage {
+		width: 500px;
+	}
+
+
+</style>
+
+
+<script type="text/javascript">
+
+	function game()
+	{
+		
+		var inputStr = document.getElementById("input").value;
+		
+		var user = Number(inputStr);
+		
+		var computer = Math.floor(Math.random() * 3) + 1;
+		
+		switch (user)
+		{
+		case 1:
+			var userStr = "가위";
+			break;
+			
+		case 2:
+			var userStr = "바위";
+			break;
+			
+		case 3:
+			var userStr = "보";
+			break;
+			
+		}
+		
+		switch (computer)
+		{
+		case 1:
+			var computerStr = "가위";
+			break;
+			
+		case 2:
+			var computerStr = "바위";
+			break;
+			
+		case 3:
+			var computerStr = "보";
+			break;
+		}
+	
+		var result = "";
+		
+		if (userStr == computerStr)
+		{
+			result = "비겼습니다.";
+		}
+		else if((userStr == "가위" && computerStr == "바위") || (userStr == "바위" && computerStr == "보") || (userStr == "보" && computerStr == "가위"))
+		{
+			result = "컴퓨터가 이겼습니다.";
+		}
+		else if((userStr == "가위" && computerStr == "보") || (userStr == "바위" && computerStr == "가위") || (userStr == "보" && computerStr == "바위"))
+		{
+			result = "유저가 이겼습니다.";
+		}
+		
+		var str = "사용자 : " + userStr + "       컴퓨터 : " + computerStr + " → " + result;
+		document.getElementById("resultline").value = str;
+			
+	}
+
+
+</script>
+
+
+</head>
+
+
+<body>
+
+<!--
+	html,css,js 를 활용하여
+	가위 바위 보 게임을 구현한다.
+	
+	단, 자바스크립트에서 난수를 발생시키는 함수를 찾아 활용할 수 있도록 한다.
+	
+	페이지 레이아웃
+	------------------------------------------------------------------------
+
+	가위(1), 바위(2), 보(3) 중 입력 : [                 ]
+	
+	< 게임 결과 확인 > //-- 버튼
+	
+	[ 사용자 : xx 컴퓨터:xx → 컴퓨터가 이겼습니다. ]
+	
+	------------------------------------------------------------------------		
+-->
+
+
+	<div>
+		<h1>자바스크립트 난수 발생</h1>
+		<hr>
+	</div>
+	
+	<div>
+		가위(1), 바위(2), 보(3) 중 입력 : <input type="text" id="input">
+		<br><br>
+		
+		<input type="button" id="btn"  value="게임 결과 확인" onclick="game()">
+		<br><br>
+		
+		<input type="text" class="resultpage" id="resultline">
+		
+	</div>
+
+
+
+
+</body>
+
+
+
+</html>

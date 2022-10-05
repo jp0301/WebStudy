@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test029.html</title>
+
+
+
+
+<script type="text/javascript">
+
+	var size = 0;
+
+	function sizeSelect() {
+		var radioObj = document.getElementsByName("radioGroup");
+		
+		for (var i = 0; i < radioObj.length; i++)
+		{
+			if (radioObj[i].checked)
+			{
+				size = radioObj[i].value;
+				break;
+			}
+		}
+		
+		return size;
+	}
+	
+
+	function iceSelect() {
+		
+		var ea = sizeSelect();
+		
+		//alert(ea);
+		
+		var checkObj = document.getElementsByName("checkGroup"); // 0 1 2 3 4 5 6 7 8 9 10 11
+		var arr = new Array(ea);
+		
+		var flag = true;
+		
+		for (var i = 0; i < checkObj.length; i++)
+		{
+			if (checkObj[i].checked)
+			{
+				arr[i] += checkObj[i].value;
+				
+				flag = false;
+			}
+		}
+		
+		if (arr.length > checkObj.length)
+		{
+			alert("초과");
+			return;
+		}
+		
+		// 아무것도 체크하지 않았을 때
+		if (flag)
+		{
+			message = "선택한 종류가 없습니다.";
+			alert(message);
+		}
+		else
+		{
+			alert(message);		
+		
+		}
+	
+		
+		
+		
+		
+	}
+	
+	
+	
+</script>
+
+
+
+
+
+</head>
+<body>
+
+	<div>
+		<h1>자바스크립트 활용</h1>
+		<p>아이스크림 주문</p>
+		<hr>
+	</div>
+	
+	
+	<div>
+		<form>
+			---- 사이즈 선택 ----
+			<br><br>
+			
+			<label>
+				<input type="radio" name="radioGroup" id="size1" value="1">
+				싱글(1)
+			</label>
+			<br>
+			
+			<label>
+				<input type="radio" name="radioGroup" id="size2" value="2">
+				더블(2)
+			</label>
+			<br>
+			
+			
+			<label>
+				<input type="radio" name="radioGroup" id="size3" value="3">
+				파인트(3)
+			</label>
+			<br>
+			
+			
+			<label>
+				<input type="radio" name="radioGroup" id="size4" value="4">
+				쿼터(4)
+			</label>
+			<br>
+			
+			<label>
+				<input type="radio" name="radioGroup" id="size5" value="5">
+				패밀리(5)
+			</label>
+			<br>
+			
+			<label>
+				<input type="radio" name="radioGroup" id="size6" value="6">
+				하프갤런(6)
+			</label>
+			<br><br>
+			
+			
+			---- 아이스크림 종류 ----
+			<br><br>
+			<label>
+				<input type="checkbox" name="checkGroup" id="c1" value="엄마">엄마는 외계인
+			</label>
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c2" value="바닐라">바닐라
+			</label>
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c3" value="레인">레인보우 샤베트
+			</label>
+			
+						
+			<label>
+				<input type="checkbox" name="checkGroup" id="c4" value="민트">민트 쵸코 봉봉
+			</label>
+			<br>
+			
+			
+			
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c5" value="아몬">아몬드 봉봉
+			</label>
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c6" value="바람">바람과 함께 사라지다
+			</label>
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c7" value="초코">초코나무숲
+			</label>
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c8" value="요거">요거트
+			</label>
+			<br>
+			
+
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c9" value="블랙">블랙소르베
+			</label>
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c10" value="베리">베리베리 스트로베리
+			</label>
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c11" value="체리">체리쥬빌레
+			</label>
+			
+			<label>
+				<input type="checkbox" name="checkGroup" id="c12" value="슈팅">슈팅스타
+			</label>
+			<br>
+
+			<button type="button" class="btn" onclick="iceSelect()">체크박스버튼</button>
+			
+		</form>
+	</div>
+
+
+
+</body>
+</html>

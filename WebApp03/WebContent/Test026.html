@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Test026.html</title>
+
+
+<style type="text/css">
+
+</style>
+
+
+<script type="text/javascript">
+	
+	function test()
+	{
+		document.getElementById("txtResult").value = "";
+		
+		var countStr = document.getElementById("order").value;
+		var count = parseInt(countStr);
+		
+		
+		
+		var n = Math.floor(Math.random() * 45 + 1);
+		
+		var arr = new Array();
+		
+
+		for(var e = 0; e < count; e++)
+		{
+			for (var c = 0; c < 6; c++)
+			{
+				arr[c] = Math.floor(Math.random() * 45 + 1);
+				
+			}
+	
+			//중복검사
+			for (var bf = 0; bf < arr.length; bf++)
+			{
+				for (var l = 0; l < arr.length; l++)
+				{
+					if (arr[bf] == arr[l])
+					{
+						arr[bf] = Math.floor(Math.random() * 45 + 1);
+					}
+				}
+			}
+			
+			
+			// 정렬
+			for (var i = 0; i < arr.length; i++)
+			{
+				for (var j = 0; j < arr.length - i; j++)
+				{
+					if (arr[j] > arr[j+1])
+					{
+						temp = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = temp;
+					}
+				}
+			}
+			
+			
+
+			var result = "";
+			
+			for (var k = 0; k < arr.length; k++)
+			{
+				result += arr[k] + " ";
+			}
+			result += "\n";
+
+
+			//출력
+			document.getElementById("txtResult").value += result;
+		}
+
+	}
+
+
+</script>
+
+
+</head>
+
+
+<body>
+
+<!--
+	HTML, CSS, Javascript 를 활용하여
+	로또 번호(1~45)를 중복되지 않은 정수 6개로 생성하여
+	출력해주는 페이지를 구현한다.
+	단, 난수 발생 함수를 활용한다.
+	
+	또한, 하나의 게임 내에서 번호순(오름차순)으로 정렬하여 출력할 수 있도록 한다.
+	그리고, 주문한 게임의 수 만큼 출력할 수 있도록 한다.
+	
+	
+	페이지 레이아웃
+	-------------------------------------------------------
+	
+	로또 게임 [     ] 장				 → text
+	
+	< 주문하기 >						 → button
+	
+	내용								 → textarea
+	-----------------------
+	
+	
+	-----------------------
+	
+	
+	-------------------------------------------------------
+	
+-->
+	
+	<div>
+		<h1>자바스크립트 활용</h1>
+		<h2>로또 게임</h2>
+		<hr>
+		
+	</div>
+	
+	
+	<div>
+		<form>
+			로또 게임
+			<input type="text" class="inputbox" id="order">
+			<br><br>
+			
+			<input type="button" class="btn" value="주문하기" onclick="test()">
+			<br><br>
+			
+			<textarea cols="50" rows="25" id="txtResult" readonly="readonly"></textarea>
+			<br><br>
+		</form>
+	</div>
+
+
+
+
+</body>
+
+
+
+</html>

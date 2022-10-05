@@ -121,7 +121,7 @@
 			
 			for (var i = 0; i < days; i++)
 			{
-				trNode.appendChild(createTdNode(" "));
+				trNode.appendChild(createTdNode(""));
 			}
 			
 			// 1일 부터 ... 해당 월의 마지막 날짜까지 td 채우기
@@ -129,13 +129,46 @@
 			for (d = 1; d <= lastDay; d++)
 			{
 				trNode.appendChild(createTdNode(d));
+
+				
+				// 일요일을 그리기 시작할 때... (토요일을 그린 후...)
+				// 기존 tr 구성을 마무리하고
+				// 다시 새로운 tr을 구성할 수 있도록 처리
+				
+				if ((days+d)%7 == 0) // 일요일을 그릴 차례...
+				{
+					tableNode.appendChild(trNode);			//-- 기존 tr 구성 마무리
+					trNode = document.createElement("tr");	//-- 새로운 tr 구성
+				}
 			}
 			
+			// 날짜 구성 이후 마지막 빈 칸 td 채우기
+			// 단, 특정 조건을 만족할 경우에만...
+			// (월의 마지막이 토요일로 끝나지 않은 경우...
+			//	즉, 일요일을 그리기 시작할 상황이 아닌 경우...)
+			if ( (days+(d-1))%7 != 0 )
+			{
+				for (var i = 0; i < 7; i++, d++)
+				{
+					trNode.appendChild(createTdNode(""));
+					
+					// 일요일을 그리기 시작할 때...(토요일 자리를 만든 후....)
+					// 기존 tr 구성을 마무리할 수 있도록 처리
+					if ((days+d)%7 == 0)						//check~!!!
+					{
+						tableNode.appendChild(trNode);
+						break;
+					} 
+					//-- 토요일 빈 칸 td까지 다채웠으면 그만해라~!!!
+				}
+			}
 			
-			tableNode.appendChild(trNode);
 
+			tableNode.appendChild(trNode);
 		}
 
+
+		
 		function createTdNode(val) // "4" 
 		{
 			var textNode = document.createTextNode(val); // └"4"
@@ -145,7 +178,7 @@
 														 //   </td>
 			return tdNode;
 		}
-	
+
 	</script>
 	
 	
@@ -155,7 +188,7 @@
 
 <body>
 
-<!--  ①
+<!-- 
 	만년달력 페이지를 구성한다.
 	html, css, js 를 활용.
 	테이블 태그 동적 생성 구문을 활용한다.

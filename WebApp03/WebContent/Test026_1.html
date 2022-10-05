@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Test026_1.html</title>
+
+
+<style type="text/css">
+
+</style>
+
+
+<script type="text/javascript">
+	
+	function test()
+	{
+		//alert("함수 호출 확인");
+		document.getElementById("resultArea").value = "";
+		
+		
+		var countStr = document.getElementById("txtCount").value;
+		var count = parseInt(countStr);
+		
+		
+		for (var i = 0; i < count; i++)
+		{
+			
+			//document.getElementById("resultArea").value += "로또 한 게임 수행" + "\n";
+			//document.getElementById("resultArea").value += 로또 한 게임 수행 함수() + "\n";			
+			document.getElementById("resultArea").value += lottoSingle() + "\n";			
+		}
+
+	}
+	
+	// 로또 한 게임 수행 함수 정의
+	function lottoSingle() 
+	{
+		//return "수행한 로또 게임";
+		
+		// 방 6개로 구성된 자바스크립트 배열 생성 → 뽑힌 6개의 카드를 넣을 배열
+		var lottoArray = new Array(6);
+		
+		// 방 45개로 구성된 자바스크립트 배열 생성 → 뽑을 대상이 되는 45개의 카드
+		var cardArray = new Array(45);
+		
+		// 45개의 방으로 구성된 배열을 각 방에 1 ~ 45 의 로또 번호 채워넣기 → 카드 만들기
+		for (var i = 1; i <= cardArray.length; i++)
+		{
+			cardArray[i-1] = i; 
+		}
+		
+		// 확인
+		//alert(cardArray[21]);
+		//--==>> 22
+		
+		// 뒤섞기
+		for (var i = 0; i < cardArray.length; i++)
+		{
+			var j = parseInt(Math.random() * 45); // 0 ~ 44의 난수 발생
+			
+			// 무작위로 발생한 방 번호의 값(j)와 0, 1, 2, 3, ... 방의 값을 자리바꿈
+			var temp = cardArray[i];
+			cardArray[i] = cardArray[j];
+			cardArray[j] = temp;
+			
+		}
+		
+		// 뽑힌 6개의 카드를 넣을 배열(최종 구성) 요소로 값 옮겨담기
+		for (var i = 0; i < lottoArray.length; i++)
+			lottoArray[i] = cardArray[i];	
+
+		
+		// 정렬 기능 추가~!!!      3     5
+		lottoArray.sort(function(left, right)
+		{
+			return Number(left) - Number(right);
+		});
+		//음수 -> 왼편값이 더작구나, 양수 -> 오른편값이 더작구나.
+		
+		
+		// 구성된 최종 배열 반환
+		return lottoArray;
+	}
+</script>
+
+
+</head>
+
+
+<body>
+
+<!--
+	HTML, CSS, Javascript 를 활용하여
+	로또 번호(1~45)를 중복되지 않은 정수 6개로 생성하여
+	출력해주는 페이지를 구현한다.
+	단, 난수 발생 함수를 활용한다.
+	
+	또한, 하나의 게임 내에서 번호순(오름차순)으로 정렬하여 출력할 수 있도록 한다.
+	그리고, 주문한 게임의 수 만큼 출력할 수 있도록 한다.
+	
+	
+	페이지 레이아웃
+	-------------------------------------------------------
+	
+	로또 게임 [     ] 장				 → text
+	
+	< 주문하기 >						 → button
+	
+	내용								 → textarea
+	-----------------------
+	
+	
+	-----------------------
+
+	-------------------------------------------------------
+	
+-->
+	
+	<div>
+		<h1>자바스크립트 활용</h1>
+		<h2>로또 게임</h2>
+		<hr>
+		
+	</div>
+	
+	
+	<div>
+	
+		<form>
+			로또 게임
+			<input type="text" class="txt" id="txtCount"> 장
+			<br><br>
+			
+			<input type="button" class="btn" value="주문하기" onclick="test()">
+			<br><br>
+			
+			내용<br>
+			<textarea cols="50" rows="25" id="resultArea" readonly="readonly"></textarea>
+			<br><br>
+		</form>
+	</div>
+</body>
+
+</html>
