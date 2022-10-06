@@ -9,16 +9,28 @@
 
 <script type="text/javascript">
 
-	var cnt = 0;
-	var userCnt = 0;
+
+	var cnt = 0;			//선택 가능한 아이스크림의 갯수
+	var userCnt = 0;		// 사용자가 선택한 아이스크림의 갯수
 	
-	function countSet(val) {
-		cnt = parseInt(val);
+	// 선택 가능한 아이스크림 갯수 설정 가능
+	function countSet(obj) {
+		//alert("함수 호출~!!!");
+		
+		// 선택할 수 있는 아이스크림 갯수 설정
+		cnt = parseInt(obj.value);
+		
 	}
 	
-
+	//각각의 아이스크림 선택 가능
+	//-- 이 과정에서 선택 가능한 아이스크림 갯수와 비교
 	function actionSelect(obj)
 	{
+		
+		//확인
+		//alert(obj.checked);
+		// 클릭 액션에 의해 check 되었을 때 true / check해제 되었을 때 false 반환
+		
 		if (obj.checked)
 		{
 			if (userCnt >= cnt)
@@ -27,11 +39,12 @@
 				obj.checked = false;
 				return;
 			}
-			
+			// 사용자가 선택한 갯수 증가	
 			userCnt++;
 		}
 		else
 		{
+			// 사용자가 선택한 갯수 감소
 			userCnt--;
 		}
 		
