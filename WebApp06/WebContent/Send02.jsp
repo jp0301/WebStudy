@@ -47,8 +47,8 @@
 	</div>
 	
 	<div>
-		<form action="/WebApp06/Receive02.jsp" method="get">
-			<table>
+		<form action="/WebApp06/Receive02.jsp" method="post">
+			<table class="table">
 				<tr>
 					<th>이름</th>
 					<td>

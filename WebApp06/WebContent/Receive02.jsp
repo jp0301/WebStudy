@@ -1,6 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%
+	
+	// 한글 처리를 위한 인코딩 방식 지정(한글 깨짐 방지)
+	request.setCharacterEncoding("UTF-8");
+
+	// 이전 페이지로부터 넘어온 데이터 수신
 	String name = request.getParameter("userName");
 	String korStr = request.getParameter("korScore");
 	String engStr = request.getParameter("engScore");
