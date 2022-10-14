@@ -196,7 +196,7 @@
 -->
 
 <div>
-	<h1>데이터 송수신 관련 실습07</h1>
+	<h1>데이터 송수신 관련 실습07_1</h1>
 	<h2>달력 요청 및 응답2</h2>
 	<hr>
 </div>
@@ -204,12 +204,10 @@
 
 <div>
 	<form action="" method="post">
-		<!-- <button onclick="actionCalendar(-1)">◀</button> -->
 		<a href="SendAndReceive07_1.jsp?year=<%=selectYear %>&month=<%=selectMonth - 1%>">◀</a>
 		<!-- 년도 월 -->
 		<input class="yearMonth" type="text" id="year" name="year" value=<%=selectYear %>>년
 		<input class="yearMonth" type="text" id="month" name="month" value=<%=selectMonth %>>월
-		<!-- <button onclick="actionCalendar(+1)">▶</button> -->
 		 <a href="SendAndReceive07_1.jsp?year=<%=selectYear %>&month=<%=selectMonth + 1%>">▶</a>
 		<!--  a태그활용해서 링크로 처리해봐라.... -->
 	</form>

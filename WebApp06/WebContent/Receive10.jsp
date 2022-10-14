@@ -11,9 +11,6 @@
 	
 	String resultStr = (String)request.getAttribute("resultStr");
 	
-	
-	
-	
 %>
 
 <!DOCTYPE html>
@@ -25,12 +22,11 @@
 </head>
 <body>
 
-
 <div>
-	<h1>데이터 송수신 관련 실습 10</h1>
-	<h2>포워드/리다이렉트에서 포워드와 관련한 중요한 실습 01</h1>
+	<h1>포워드/리다이렉트에서 포워드와 관련한 중요한 실습 01</h1>
 	<hr>
 </div>
+
 
 
 <div>

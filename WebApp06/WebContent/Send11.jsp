@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Send10.jsp</title>
+<title>Send11.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -18,23 +18,24 @@
 
 <!--     1. 사칙연산 수행을 위한 정수 입력 페이지를 구성한다. 
          2. 연산자를 함께 입력받을 수 있도록 페이지를 구성한다.
-            (Send09.jsp)
+            (Send11.jsp)
               
          3. 사용자의 최초 요청 페이지
-            → 『http://localhost:8090/WebApp06/Send10.jsp』
+            → 『http://localhost:8090/WebApp06/Send11.jsp』
 
          4. 연산 전용 페이지를 구성한다. → java 혼자 빼려고 하는 것이다. → Servlet
-            (Forward10.jsp)
+            (Redirect11.jsp)
 			※ 스크립릿 코드만 존재 → java 코드(+ jsp:forward 액션태그)
 			
 			
          5. 최종 결과 출력 페이지를 구성한다.
-            (Receive10.jsp)
+            (Receive11.jsp)
 -->
 
 
 <div>
-	<h1>포워드/리다이렉트에서 포워드와 관련한 중요한 실습 01</h1>
+	<h1>데이터 송수신 관련 실습11</h1>
+	<h2>포워드/리다이렉트에서 포워드와 관련한 중요한 실습 02</h2>
 	<hr>
 </div>
 
@@ -42,7 +43,7 @@
 <div>
 
 	<!-- <form action="Forward10.jsp" method="post"> -->
-	<form action="Forward10_1.jsp" method="post">
+	<form action="Redirect11.jsp" method="post">
 		정수1 : <input type="text" name="num1" class="txt">
 		정수2 : <input type="text" name="num2" class="txt">
 		연산자 : 
