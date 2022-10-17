@@ -1,0 +1,73 @@
+SELECT USER
+FROM DUAL;
+--==>> SCOTT
+
+SELECT *
+FROM TBL_SCORE;
+
+
+--○ 기존 테이블 제거
+DROP TABLE TBL_SCORE PURGE;
+--==>> Table TBL_SCORE이(가) 삭제되었습니다.
+
+
+--○ 기존 시퀀스 제거
+DROP SEQUENCE SCORESEQ;
+--==>> Sequence MEMBERSEQ이(가) 삭제되었습니다.
+
+--○ 실습 테이블 생성(TBL_MEMBER)
+CREATE TABLE TBL_SCORE
+( SID   NUMBER
+, NAME  VARCHAR2(30)        NOT NULL
+, KOR   NUMBER(3,0)
+, ENG   NUMBER(3,0)
+, MAT   NUMBER(3,0)
+, CONSTRAINT SCORE_SID_PK PRIMARY KEY(SID)
+);
+--==>> Table TBL_SCORE이(가) 생성되었습니다.
+
+--○ 시퀀스 생성(MEMBERSEQ)
+CREATE SEQUENCE SCORESEQ
+NOCACHE;
+--==>> Sequence SCORESEQ이(가) 생성되었습니다.
+
+
+
+
+
+--○ 데이터 입력 및 입력 쿼리문 구성
+INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT)
+VALUES(SCORESEQ.NEXTVAL, '김태민', 90, 80, 70);
+--> 한 줄 구성
+INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT) VALUES(SCORESEQ.NEXTVAL, '김태민', 90, 80, 70)
+;
+--==>>  1 행 이(가) 삽입되었습니다.
+INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT) VALUES(SCORESEQ.NEXTVAL, '최동현', 80, 70, 60)
+;
+--==>>  1 행 이(가) 삽입되었습니다.
+INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT) VALUES(SCORESEQ.NEXTVAL, '민찬우', 70, 60, 50)
+;
+--==>>  1 행 이(가) 삽입되었습니다.
+
+
+
+--○ 테이블 데이터 전체 조회 쿼리문 구성
+SELECT SID, NAME, KOR, ENG, MAT
+FROM TBL_SCORE
+ORDER BY SID;
+--> 한 줄 구성
+SELECT SID, NAME, KOR, ENG, MAT FROM TBL_SCORE ORDER BY SID
+;
+/*
+1	김태민	90	80	70
+2	최동현	80	70	60
+3	민찬우	70	60	50
+*/
+
+
+SELECT SID, NAME, KOR, ENG, MAT, KOR+ENG+MAT AS TOT, ((KOR+ENG+MAT)/3.0) AS AVG
+FROM TBL_SCORE
+ORDER BY SID;
+
+--커밋
+COMMIT;
