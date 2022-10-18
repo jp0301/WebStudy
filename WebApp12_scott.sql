@@ -1,0 +1,26 @@
+select USER
+from DUAL;
+--==>> SCOTT
+
+--○ 데이터 전체 조회
+SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT, (KOR+ENG+MAT)/3 AS AVG 
+FROM TBL_SCORE
+ORDER BY SID;
+--> 한 줄 구성
+SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT, (KOR+ENG+MAT)/3 AS AVG  FROM TBL_SCORE ORDER BY SID
+;
+
+--○ 데이터 추가 입력
+--> 한 줄 구성
+INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT) VALUES(SCORESEQ.NEXTVAL, '박원석', 80, 70, 90)
+;
+
+
+--○ 전체 인원 수 조회
+SELECT COUNT(*) FROM TBL_SCORE;
+
+
+--○ 커밋
+COMMIT;
+--==>> 커밋 완료.
+

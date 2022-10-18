@@ -64,6 +64,34 @@
 	input:focus{background-color: #ffeeff;}
 	#memberCount {font-size:small; font-weight: bold;}
 </style>
+
+<script type="text/javascript">
+
+	function formCheck() {
+		//alert("함수 호출 확인");
+		
+		var userName = document.getElementById("userName");
+		var nameMsg = document.getElementById("nameMsg");
+		
+		var userTel = document.getElementById("userTel");
+		
+		
+		nameMsg.style.display = "none";
+		
+		if(userName.value == "")
+		{
+			nameMsg.style.display = "inline";
+			userName.focus();
+			return false;
+		}
+		
+		return true;
+	}
+
+
+</script>
+
+
 </head>
 <body>
 
@@ -74,7 +102,7 @@
 
 <div>
 	<p>DTO, DAO 개념 적용</p>
-	<form>
+	<form action="MemberInsert.jsp" method="post" onsubmit="return formCheck()">
 		<table class="table">
 			<tr>
 				<th>이름(*)</th>
