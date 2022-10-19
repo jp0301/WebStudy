@@ -3,14 +3,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	
+
 	StringBuffer str = new StringBuffer();
-	
 	MemberScoreDAO dao = new MemberScoreDAO();
 	
 	try
 	{
-		// 데이터베이스 연결
 		dao.connection();
 		
 		str.append("<table class='table'>");
@@ -32,82 +30,29 @@
 			str.append("<td class='txtScore'>" + score.getEng() + "</td>");
 			str.append("<td class='txtScore'>" + score.getMat() + "</td>");
 			str.append("<td class='txtScore'>" + score.getTot() + "</td>");
-			str.append("<td class='txtScore'>" + String.format("%.2f", score.getAvg()) + "</td>");
+			str.append("<td class='txtScore'>" + score.getAvg() + "</td>");
 			str.append("<td class='txtScore'>" + score.getRank() + "</td>");
-			
-			
-			
-			
-/* 			str.append("<td>");
+			str.append("<td>");
 			str.append("<button type='button' class='btn01'>");
 			str.append("입력");
 			str.append("</button>");
-			
 			str.append("<button type='button' class='btn01'>");
 			str.append("수정");
 			str.append("</button>");
-			
 			str.append("<button type='button' class='btn01'>");
 			str.append("삭제");
 			str.append("</button>");
+			str.append("</td>");
 			
-			str.append("</td>"); */
 			
-			
-			if(score.getKor() == -1 && score.getEng() == -1 && score.getMat() == -1)
-			{
-				str.append("<td>");
-				
-				str.append("<a href='MemberScoreInsertForm.jsp?sid=" + score.getSid() + "'>");
-				str.append("<button type='button' class='btn01'>");
-				str.append("입력");
-				str.append("</button>");
-				str.append("</a>");
-				
-				str.append("<button type='button' class='btn02'>");
-				str.append("수정");
-				str.append("</button>");
-				str.append("<button type='button' class='btn02'>");
-				str.append("삭제");
-				str.append("</button>");
-				
-				str.append("</td>");
-			}
-			else
-			{
-				str.append("<td>");
-				
-				str.append("<button type='button' class='btn02'>");
-				str.append("입력");
-				str.append("</button>");
-				
-				str.append("<a href='MemberScoreUpdateForm.jsp?sid=" + score.getSid() + "'>");
-				str.append("<button type='button' class='btn01'>");
-				str.append("수정");
-				str.append("</button>");
-				str.append("</a>");
-				
-				str.append("<a href='javascript:memberScoreDelete()'>");
-				str.append("<button type='button' class='btn01'>");
-				str.append("삭제");
-				str.append("</button>");
-				str.append("</a>");
-				
-				str.append("</td>");
-				
-			}
-			
-
-			
-			str.append("</tr>");
+			str.append("<tr>");
 		}
 		str.append("</table>");
 		
-		
 	}
-	catch(Exception e)
+	catch (Exception e)
 	{
-		System.out.println(e.toString());
+		System.out.print(e.toString());
 	}
 	finally
 	{
@@ -115,12 +60,11 @@
 		{
 			dao.close();
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
-			System.out.println(e.toString());
+			System.out.print(e.toString());
 		}
 	}
-	
 	
 	
 %>
@@ -129,16 +73,8 @@
 <head>
 <meta charset="UTF-8">
 <title>MemberScoreSelect.jsp</title>
-<link rel="stylesheet" type="text/css" href="css/MemberSelect.css">
-
-<script type="text/javascript">
-
-	function memberScoreDelete()
-	{
-		alert("ddd");	
-	}
-</script>
-
+<!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+<link rel="stylesheet" type="text/css" href="css/memberSelect.css">
 </head>
 <body>
 
@@ -152,11 +88,9 @@
 </div>
 <br>
 
-
 <div>
 	<!-- 리스트 출력 -->
 	<%=str.toString() %>
-
 </div>
 
 
