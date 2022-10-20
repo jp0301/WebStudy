@@ -87,7 +87,7 @@
 				str.append("</button>");
 				str.append("</a>");
 				
-				str.append("<a href='javascript:memberScoreDelete()'>");
+				str.append("<a href='javascript:memberScoreDelete(" + score.getSid() + ", \"" + score.getName() + "\")'>");
 				str.append("<button type='button' class='btn01'>");
 				str.append("삭제");
 				str.append("</button>");
@@ -133,9 +133,19 @@
 
 <script type="text/javascript">
 
-	function memberScoreDelete()
+	function memberScoreDelete(sid, name)
 	{
-		alert("ddd");	
+		//번호 : 1, 이름 : 조현하
+		//이 회원의 성적 정보를 삭제하시겠습니까?
+		//    <확인> <취소>
+		
+		var result = confirm("번호 : " + sid + " , 이름 : " + name + "\n 이 회원의 성적 정보를 삭제하시겠습니까?");
+		
+		if(result)
+		{
+			window.location.href="MemberScoreDelete.jsp?sid=" + sid;	
+		}
+		
 	}
 </script>
 

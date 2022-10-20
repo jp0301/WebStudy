@@ -118,4 +118,44 @@ public class MemberScoreDAO
 	
 	
 	
+	// 성적 데이터 수정 담당 메소드
+	public int modify(MemberScoreDTO dto) throws SQLException
+	{
+		int result = 0;
+		
+		String sql = "UPDATE TBL_MEMBERSCORE SET KOR=?, ENG=?, MAT=? WHERE SID=?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, dto.getKor());
+		pstmt.setInt(2, dto.getEng());
+		pstmt.setInt(3, dto.getMat());
+		pstmt.setString(4, dto.getSid());
+		
+		result = pstmt.executeUpdate();
+		
+		pstmt.close();
+		
+		return result;
+	}
+	
+	// 성적 데이터 삭제 담당 메소드
+	public int remove(String sid) throws SQLException 
+	{
+		int result = 0;
+		
+		String sql = "DELETE FROM TBL_MEMBERSCORE WHERE SID=?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, sid);
+		
+		result = pstmt.executeUpdate();
+		
+		pstmt.close();
+		
+		return result;
+	}
+	
+	
 }
