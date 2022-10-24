@@ -10,12 +10,12 @@
    
    01. DBConn.java		  ○
    02. BoardDTO.java	  ○
-   03. BoardDAO.java	  ○ ing~
-   04. MyUtil.java
+   03. BoardDAO.java	  △
+   04. MyUtil.java		  ○
    
-   05. List.jsp
+   05. List.jsp			  ○
    06. Create.jsp
-   07. Artivle.jsp
+   07. Create_ok.jsp
    08. Article.jsp
    09. Update.jsp
    10. Update_ok.jsp
