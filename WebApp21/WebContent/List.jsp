@@ -76,6 +76,19 @@
 <title>List.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/style.css">
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/list.css">
+
+<script type="text/javascript">
+
+	/*
+	function createBoard()
+	{
+		window.location.href="Create.jsp";
+	} 
+	*/
+	
+</script>
+
+
 </head>
 <body>
 
@@ -99,7 +112,8 @@
 		</div><!--  #leftHeader -->
 		
 		<div id="rightHeader">
-			<input type="button" value="글올리기" class="btn2">
+			<input type="button" value="글올리기" class="btn2" onclick="javascript:location.href='<%=cp %>/Create.jsp'"/>
+			<!-- <input type="button" value="글올리기" class="btn2" onclick="createBoard()"/> -->
 		</div><!-- rightHeader -->
 		
 	</div><!-- #bbsList_header -->
@@ -142,7 +156,9 @@
 			%>
 			<dl>
 				<dd class="num"><%=dto.getNum() %></dd>
-				<dd class="subject"><%=dto.getSubject() %></dd>
+				<dd class="subject">
+					<a href="<%=articleUrl %>&num=<%=dto.getNum() %>"><%=dto.getSubject() %></a>
+				</dd>
 				<dd class="name"><%=dto.getName() %></dd>
 				<dd class="created"><%=dto.getCreated() %></dd>
 				<dd class="hitCount"><%=dto.getHitCount() %></dd>

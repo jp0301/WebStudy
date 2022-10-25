@@ -113,6 +113,7 @@ public class BoardDAO
 	
 	// DB 레코드의 갯수를 가져오는 메소드 정의
 	// → 검색 기능을 추가하게 되면 수정하게 될 메소드
+	/*
 	public int getDataCount()
 	{
 		int result = 0;
@@ -141,12 +142,53 @@ public class BoardDAO
 		}		
 		return result;
 	} // end getDataCount()
+	*/
 	
-
+	public int getDataCount(String searchKey, String searchValue)
+	{
+		// searchKey	→ subject	/ name		/ content
+		// searchValue  → "%취미%"   / "%길동%"    / "%오락%"
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		
+		try
+		{
+			searchValue = "%" + searchValue + "%";
+			
+			sql="SELECT COUNT(*) AS COUNT"
+			   + " FROM TBL_BOARD"
+			   + " WHERE " + searchKey + " LIKE ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchValue);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+				result = rs.getInt("COUNT");
+			
+			rs.close();
+			pstmt.close();
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+		
+	} // end getDataCopunt(String searchKey, String searchValue)
+	
 	
 	
 	// 특정 영역의(시작번호 ~ 끝번호) 게시물의 목록을 읽어오는 메소드 정의
 	// → 검색 기능을 추가하게 되면 수정하게 될 메소드
+	/*
 	public List<BoardDTO> getList(int start, int end) // BoardDTO 들을 반환
 	{ 
 		List<BoardDTO> result = new ArrayList<BoardDTO>();
@@ -191,6 +233,39 @@ public class BoardDAO
 		}
 		return result;
 	} // end getList(int start, int end)
+	*/
+	
+	public List<BoardDTO> getList(int start, int end, String searchKey, String searchValue)
+	{
+		List<BoardDTO> result = new ArrayList<BoardDTO>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql="";
+		
+		try
+		{
+			searchValue = "%" + searchValue + "%";
+			
+			sql="SELECT NUM, NAME, SUBJECT, HITCOUNT, CREATED"
+					+ " FROM (SELECT ROWNUM RNUM, DATA.*"
+					+ " FROM(SELECT NUM, NAME, SUBJECT, HITCOUNT, TO_CHAR(CREATED, 'YYYY-MM-DD') AS CREATED "
+					+ " FROM TBL_BOARD"
+					+ " WHERE " + searchKey + " LIKE ?"
+					+ " ORDER BY NUM DESC"
+					+ " ) DATA )"
+					+ " WHERE RNUM >= ? AND RNUM <= ?";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+	
+	
+	
 	
 	
 	
@@ -403,40 +478,6 @@ public class BoardDAO
 	} // end getBeforeNum(int num)
 	
 
-	
-	
-	// 게시물 검색 기능 관련 쿼리문 구성
-	public int searchData(String subject)
-	{
-		int result = 0;
-		String sql = "";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try
-		{
-			sql = "SELECT COUNT(*) AS COUNT FROM TBL_BOARD WHERE SUBJECT LIKE ?";
-			pstmt = conn.prepareStatement(sql);
-			
-			subject = '%' + subject + '%';
-			
-			pstmt.setString(1, subject);
-			rs = pstmt.executeQuery();
-
-			while(rs.next())
-			{
-				result = rs.getInt("COUNT");
-			}
-			
-			rs.close();
-			pstmt.close();
-			
-		} catch (Exception e)
-		{
-			System.out.println(e.toString());
-		}
-		return result;
-	} // end searchData(String subject)
 	
 	
 

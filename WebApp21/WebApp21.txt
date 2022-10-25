@@ -13,13 +13,13 @@
    03. BoardDAO.java	  △
    04. MyUtil.java		  ○
    
-   05. List.jsp			  ○
-   06. Create.jsp
-   07. Create_ok.jsp
-   08. Article.jsp
-   09. Update.jsp
-   10. Update_ok.jsp
-   11. Delete.jsp
+   05. List.jsp			  △
+   06. Create.jsp		  ○
+   07. Create_ok.jsp      ○
+   08. Article.jsp        ○
+   09. Update.jsp		  ○
+   10. Update_ok.jsp	  ○
+   11. Delete_ok.jsp      ○
 
    └ 요정도면 외워둬도 좋다...
    
