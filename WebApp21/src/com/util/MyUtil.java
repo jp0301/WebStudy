@@ -112,8 +112,6 @@ public class MyUtil
 		//   이런 상황이라면 다시 10을 빼서 10으로 만들어준다.
 		
 		
-		
-		
 		// 1 페이지
 		if( (totalPage > numPerBlock) && (currentPageSetup > 0) )
 			strList.append(" <a href='" + listUrl + "pageNum=1'>1</a>");

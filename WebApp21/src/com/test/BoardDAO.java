@@ -235,6 +235,7 @@ public class BoardDAO
 	} // end getList(int start, int end)
 	*/
 	
+	// → 검색 기능이 추가된 메소드
 	public List<BoardDTO> getList(int start, int end, String searchKey, String searchValue)
 	{
 		List<BoardDTO> result = new ArrayList<BoardDTO>();
@@ -255,6 +256,29 @@ public class BoardDAO
 					+ " ORDER BY NUM DESC"
 					+ " ) DATA )"
 					+ " WHERE RNUM >= ? AND RNUM <= ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchValue);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				BoardDTO dto = new BoardDTO();
+				
+				dto.setNum(rs.getInt("NUM"));
+				dto.setName(rs.getString("NAME"));
+				dto.setSubject(rs.getString("SUBJECT"));
+				dto.setHitCount(rs.getInt("HITCOUNT"));
+				dto.setCreated(rs.getString("CREATED"));
+				
+				result.add(dto);
+			}
+			
+			rs.close();
+			pstmt.close();
 			
 		} catch (Exception e)
 		{
