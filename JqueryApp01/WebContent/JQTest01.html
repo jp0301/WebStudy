@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <title>JQTest01.html</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 
 <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
 
 <script type="text/javascript">
 	
-	$(func()
+	$(function()
 	{
 		var d = 300;
 		
@@ -18,7 +18,13 @@
 		{
 			$(this).stop().animate({"marginTop":"-80px"}, d+= 150);
 		});
-	
+		
+		$("#navigation > li").hover(function(){
+			$("a", $(this)).stop().animate({"marginTop":"-2px"}, 100);
+		}, function()
+		{
+			$("a", $(this)).stop().animate({"marginTop":"-80px"}, 400);
+		});
 		
 	});
 	
