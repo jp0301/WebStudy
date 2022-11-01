@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest20.html</title>
+
+<style type="text/css">
+	body, div, span, th, td {
+		font-size: 12px;
+	}
+	
+	#list {
+		border : 1px solid black;
+		border-collapse: collapse;
+		width: 600px;
+		
+		border-radius: 10px;
+		
+	}
+	
+	#list th {
+		width: 50px;
+	} 
+	
+	#list td {
+		width: 150px;
+	}
+	
+	
+	#list th, td {
+		border : 1px solid black;
+		padding: 3px;
+	}
+
+</style>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+		$(function()
+		{
+			$("#btn").click(function()
+			{
+				var item = $("#item").val();
+				
+				var week = $("#week").val();
+				
+				var start = $("#start").val();
+				var end = $("#end").val();
+				
+				var color = $("#color").val();
+				
+				var trs = $("tr");
+
+			
+				for(var i = start; i <= end; i++)
+				{
+					trs.eq(i).children().eq(week).css("background-color", color).html(item);
+				}
+
+			});
+		});
+
+	
+
+
+
+</script>
+</head>
+<body>
+
+
+<div>
+	<h1>일정</h1>
+	<hr>
+</div>
+
+<table id="list">
+	<tr>
+		<th>&nbsp;</th>
+		<th>월</th>
+		<th>화</th>
+		<th>수</th>
+		<th>목</th>
+	</tr>
+	<tr>
+		<th>11:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>12:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>13:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>14:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>15:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>16:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>17:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>18:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<br><br>
+
+
+<div>
+	제목<input type="text" id="item">
+	<br>
+	
+	요일
+	<select id="week">
+		<option value="1">월</option>
+		<option value="2">화</option>
+		<option value="3">수</option>
+		<option value="4">목</option>
+	</select>
+	<br>
+	
+	시간
+	<select id="start">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	~
+	<select id="end">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	<br>
+	
+	색상
+	<select id="color">
+		<option value="red">빨강</option>
+		<option value="yellow">노랑</option>
+		<option value="blue">파랑</option>
+		<option value="gray">회색</option>
+	</select>
+	<br>
+	
+	<input type="button"  value="일정 추가하기" id="btn">
+	
+</div>
+
+</body>
+</html>
