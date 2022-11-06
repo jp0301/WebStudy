@@ -24,7 +24,7 @@
 		}
 		// (클라이언트 측에서) 자신의 브라우저가 XMLHttpRequest 객체를
 		// 지원하지 않는 상황이라면...
-		else
+		else 
 		{
 			//alert("XMLHttpRequest 지원 안함~!!!");
 			
@@ -42,10 +42,13 @@
 		// 서버로부터 응답이 오면 『readystatechange』라는 이벤트가 발생하게 된다.
 		// 즉, 『onreadystatechange』는 『readystatechange』 이벤트가 발생했을 때...
 		// 동작할 수 있도록 이벤트 핸들러를 등록하는 과정.
+		// → 이와 같은 이벤트(readystatechange)가 발생하게 되면
+		//    아래의 내용처럼 동작할 수 있도록 처리
 		xmlHttp.onreadystatechange = function()
 		{
 			// 확인
 			// alert("이벤트 발생~!!!");
+			
 			// 한번만 발생하는 것이아니라 우리 눈에 보이지 않게 이벤트가 발생한다.
 			// 결과물을 만날때까지 여러 번 발생한다. 발생 시점도 모른다.
 			
@@ -56,20 +59,39 @@
 			//    readyState 가 변경될 때 마다 발생한다.
 			
 			// ※ 『XMLHttpRequest』의 『readyState』 는 0 에서 4 까지 순차적으로 변화한다.
-			alert(xmlHttp.readyState);
+			// alert(xmlHttp.readyState);
+			//   0 → 요청이 초기화되지 않음.(기본 상태)
+			//   1 → 서버 연결이 이루어지지 않음.
+			//   2 → 요청이 수신됨.
+			//   3 → 요청을 처리중.
+			//   4 → 요청의 처리가 종료되고, 응답이 준비됨.
+
 			
+			// ※ 『XMLHttpRequest』의 『status』는 HTTP Status 코드를 의미한다.
+			//    200 → 올바른 응답
+			//    40x → 클라이언트 측 에러 ( 404 페이지 찾을 수 없음 )
+			//    50x → 서버 측 에러 ( 500 JAVA(Servlet) 에러 )
 			
-			
-			
-			
+			// 4일때 처리해줘...
 			if (xmlHttp.readyState==4 && xmlHttp.status==200)
 			{
+				// 이 구문을 통해 서버로부터 응답을 가져와 DOM 을 업데이트 하겠다는 의미
+				// 응답의 속성에는 두 가지가 있는데
+				// 『responseText』는 텍스트 형식의 응답일 경우 사용하게 되고,
+				// 『responseXML』은 응답이 XML 형식일 경우 사용하게 된다.
 				document.getElementById("myDiv").innerHTML = xmlHttp.responseText;
 			}
 			
 		}
 		
-		
+		// ※ 위의 구문은 요청 및 응답 프로세스에 대한 설정
+		//    실제 연결은 다음에서 이루어진다.
+		//    『XMLHttpRequest』의 『open("페이지 요청방식", "URL(요청하게되는 대상)",  async(true:비동기화))』 메소드는
+		//    『XMLHttpRequest』 객체를 필요한 값으로 초기화 하는데 사용하는 메소드이다.
+		//    GET 방식이 아닌 POST 방식으로 요청하기 위해서는
+		//    『xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");』
+		//    『xmlHttp.send(input1=value1&input2=value2);』
+		//     와 같이 헤더를 추가해 주어야 한다.
 		
 		xmlHttp.open("GET", "ajaxTarget.txt", true);
 		xmlHttp.send("");
