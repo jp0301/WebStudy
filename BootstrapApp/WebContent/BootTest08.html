@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BootTest08.html</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<!-- 추가 -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+
+</head>
+<body>
+
+<div>
+	<h1>Glyphicons</h1>
+	<hr>
+</div>
+
+<div>
+	아이콘 : <span class="glyphicon glyphicon-lock"></span>
+</div>
+
+
+<div>
+	<!-- 아이콘 : <span style="size: 100px;" class="glyphicon glyphicon-lock"></span> -->
+	좋아요 : <span style="font-size: 30px; color: blue;" class="glyphicon glyphicon-thumbs-up"></span>
+</div>
+
+<div>
+	<!-- Attribute Content Type → Simple Type → 적용 안됨 -->
+	<input type="button" class="glyphicon glyphicon-sunglasses">
+</div>
+
+<div>
+	<button type="button" class="btn btn-default">
+		<span class="glyphicon glyphicon-sunglasses"></span>
+		선글라스
+	</button>
+</div>
+
+<br><br><br><br><br>
+
+<div>
+	<button type="button" class="btn btn-default">Left</button>
+	<button type="button" class="btn btn-default">Middle</button>
+	<button type="button" class="btn btn-default">Right</button>
+</div>
+<br><br>
+
+
+<div class="btn-group" role="group">
+	<button type="button" class="btn btn-default">Left</button>
+	<button type="button" class="btn btn-default">Middle</button>
+	<button type="button" class="btn btn-default">Right</button>
+</div>
+<br><br>
+
+
+<div class="btn-group" role="group">
+	<button type="button" class="btn btn-default">
+	<span class="glyphicon glyphicon-align-left"></span>
+	Left</button>
+	<button type="button" class="btn btn-default">
+	<span class="glyphicon glyphicon-align-center"></span>
+	Middle</button>
+	<button type="button" class="btn btn-default">
+	<span class="glyphicon glyphicon-align-right"></span>
+	Right</button>
+</div>
+
+</body>
+</html>
