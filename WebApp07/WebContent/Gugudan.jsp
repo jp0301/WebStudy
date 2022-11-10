@@ -22,7 +22,7 @@
 	
 	<div>
 		<h2>Gugudan.jsp → Gugudan_ok.jsp</h2>
-		<form action="Gugudan_ok.jsp" methos="post">
+		<form action="Gugudan_ok.jsp" method="post">
 			<table class="table">
 				<tr>
 					<th>원하는 단 입력</th>

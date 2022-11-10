@@ -82,7 +82,6 @@
 	
 </script>
 
-</script>
 
 </head>
 <body>
